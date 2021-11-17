@@ -4,15 +4,15 @@
 
 ## Script de criação de tabelas
 
- 
+   <br/>
 
 ***CREATE DATABASE*** EstrelaDaMorte
 
 ***USE*** EstrelaDaMorte
 
+  <br/>  <br/>
 
-
-**Tabela PLANETAS**
+**>>>Criação de Tabela PLANETAS**
 
 ***CREATE TABLE*** Planetas(  <br/>
 	IdPlaneta int NOT NULL,  <br/>
@@ -28,9 +28,9 @@ GO
 ***ALTER TABLE*** Planetas ***ADD CONSTRAINT*** PK_Planetas ***PRIMARY KEY*** (IdPlaneta);  <br/>
 GO
 
+  <br/>  <br/>
 
-
-**Tabela NAVES**
+**>>>Criação de Tabela NAVES**
 
 ***CREATE TABLE*** Naves(  <br/>
 	IdNave int NOT NULL,  <br/>
@@ -45,9 +45,9 @@ GO
 ***ALTER TABLE*** Naves ***ADD CONSTRAINT*** PK_Naves ***PRIMARY KEY*** (IdNave);  <br/>
 GO
 
+  <br/>  <br/>
 
-
-**Tabela PILOTOS** 
+**>>>Criação de Tabela PILOTOS** 
 
 ***CREATE TABLE*** Pilotos(  <br/>
 	IdPiloto int NOT NULL,  <br/>
@@ -67,9 +67,9 @@ GO
 ***ALTER TABLE*** Pilotos ***CHECK CONSTRAINT*** FK_Pilotos_Planetas  <br/>
 GO
 
+  <br/>  <br/>
 
-
-**PILOTOS NAVES**
+**>>>Criação de Tabela PILOTOS NAVES**
 
 ***CREATE TABLE*** PilotosNaves(  <br/>
 	IdPiloto int NOT NULL,  <br/>
@@ -92,9 +92,9 @@ GO
 ***ALTER TABLE*** PilotosNaves  ***ADD CONSTRAINT*** DF_PilotosNaves_FlagAutorizado  ***DEFAULT (1) FOR*** FlagAutorizado  <br/>
 GO
 
+  <br/>  <br/>
 
-
-**HISTÓRICO DE VIAGENS**
+**>>>Criação de Tabela HISTÓRICO DE VIAGENS**
 
 ***CREATE TABLE*** HistoricoViagens(  <br/>
 	IdNave int NOT NULL,  <br/>
