@@ -14,98 +14,98 @@
 
 **Tabela PLANETAS**
 
-***CREATE TABLE*** Planetas(
-	IdPlaneta int NOT NULL,
-	Nome varchar(50) NOT NULL,
-	Rotacao float NOT NULL,
-	Orbita float NOT NULL,
-	Diametro float NOT NULL,
-	Clima varchar(50) NOT NULL,
-	Populacao int NOT NULL,
-)
+***CREATE TABLE*** Planetas(  <br/>
+	IdPlaneta int NOT NULL,  <br/>
+	Nome varchar(50) NOT NULL,  <br/>
+	Rotacao float NOT NULL,  <br/>
+	Orbita float NOT NULL,  <br/>
+	Diametro float NOT NULL,  <br/>
+	Clima varchar(50) NOT NULL,  <br/>
+	Populacao int NOT NULL,  <br/>
+)  <br/>
 GO
 
-***ALTER TABLE*** Planetas ***ADD CONSTRAINT*** PK_Planetas ***PRIMARY KEY*** (IdPlaneta);
+***ALTER TABLE*** Planetas ***ADD CONSTRAINT*** PK_Planetas ***PRIMARY KEY*** (IdPlaneta);  <br/>
 GO
 
 
 
 **Tabela NAVES**
 
-***CREATE TABLE*** Naves(
-	IdNave int NOT NULL,
-	Nome varchar(100) NOT NULL,
-	Modelo varchar(150) NOT NULL,
-	Passageiros int NOT NULL,
-	Carga float NOT NULL,
-	Classe varchar(100) NOT NULL,
-)
+***CREATE TABLE*** Naves(  <br/>
+	IdNave int NOT NULL,  <br/>
+	Nome varchar(100) NOT NULL,  <br/>
+	Modelo varchar(150) NOT NULL,  <br/>
+	Passageiros int NOT NULL,  <br/>
+	Carga float NOT NULL,  <br/>
+	Classe varchar(100) NOT NULL,  <br/>
+)  <br/>
 GO
 
-***ALTER TABLE*** Naves ***ADD CONSTRAINT*** PK_Naves ***PRIMARY KEY*** (IdNave);
+***ALTER TABLE*** Naves ***ADD CONSTRAINT*** PK_Naves ***PRIMARY KEY*** (IdNave);  <br/>
 GO
 
 
 
 **Tabela PILOTOS** 
 
-***CREATE TABLE*** Pilotos(
-	IdPiloto int NOT NULL,
-	Nome varchar(200) NOT NULL,
-	AnoNascimento varchar(10) NOT NULL,
-	IdPlaneta int NOT NULL,
-)
+***CREATE TABLE*** Pilotos(  <br/>
+	IdPiloto int NOT NULL,  <br/>
+	Nome varchar(200) NOT NULL,  <br/>
+	AnoNascimento varchar(10) NOT NULL,  <br/>
+	IdPlaneta int NOT NULL,  <br/>
+)  <br/>
 GO
 
-***ALTER TABLE*** Pilotos ***ADD CONSTRAINT*** PK_Pilotos ***PRIMARY KEY*** (IdPiloto);
+***ALTER TABLE*** Pilotos ***ADD CONSTRAINT*** PK_Pilotos ***PRIMARY KEY*** (IdPiloto);  <br/>
 GO
 
 ***ALTER TABLE*** Pilotos  ***ADD  CONSTRAINT*** FK_Pilotos_Planetas ***FOREIGN KEY***(IdPlaneta)
-***REFERENCES*** Planetas (IdPlaneta)
+***REFERENCES*** Planetas (IdPlaneta)  <br/>
 GO
 
-***ALTER TABLE*** Pilotos ***CHECK CONSTRAINT*** FK_Pilotos_Planetas
+***ALTER TABLE*** Pilotos ***CHECK CONSTRAINT*** FK_Pilotos_Planetas  <br/>
 GO
 
 
 
 **PILOTOS NAVES**
 
-***CREATE TABLE*** PilotosNaves(
-	IdPiloto int NOT NULL,
-	IdNave int NOT NULL,
-	FlagAutorizado bit NOT NULL,
-)
+***CREATE TABLE*** PilotosNaves(  <br/>
+	IdPiloto int NOT NULL,  <br/>
+	IdNave int NOT NULL,  <br/>
+	FlagAutorizado bit NOT NULL,  <br/>
+)  <br/>
 GO
 
-***ALTER TABLE*** PilotosNaves ***ADD CONSTRAINT*** PK_PilotosNaves ***PRIMARY KEY*** (IdPiloto, IdNave);
+***ALTER TABLE*** PilotosNaves ***ADD CONSTRAINT*** PK_PilotosNaves ***PRIMARY KEY*** (IdPiloto, IdNave);  <br/>
 GO
 
 ***ALTER TABLE*** PilotosNaves  ***ADD CONSTRAINT*** FK_PilotosNaves_Pilotos ***FOREIGN KEY***(IdPiloto)
-***REFERENCES*** Pilotos (IdPiloto)
+***REFERENCES*** Pilotos (IdPiloto)  <br/>
 GO
 
 ***ALTER TABLE*** PilotosNaves  ***ADD CONSTRAINT*** FK_PilotosNaves_Naves ***FOREIGN KEY***(IdNave)
-***REFERENCES*** Naves (IdNave)
+***REFERENCES*** Naves (IdNave)  <br/>
 GO
 
-***ALTER TABLE*** PilotosNaves  ***ADD CONSTRAINT*** DF_PilotosNaves_FlagAutorizado  ***DEFAULT (1) FOR*** FlagAutorizado
+***ALTER TABLE*** PilotosNaves  ***ADD CONSTRAINT*** DF_PilotosNaves_FlagAutorizado  ***DEFAULT (1) FOR*** FlagAutorizado  <br/>
 GO
 
 
 
 **HISTÓRICO DE VIAGENS**
 
-***CREATE TABLE*** HistoricoViagens(
-	IdNave int NOT NULL,
-	IdPiloto int NOT NULL,
-	DtSaida datetime NOT NULL,
-	DtChegada datetime NULL
-)
+***CREATE TABLE*** HistoricoViagens(  <br/>
+	IdNave int NOT NULL,  <br/>
+	IdPiloto int NOT NULL,  <br/>
+	DtSaida datetime NOT NULL,  <br/>
+	DtChegada datetime NULL  <br/>
+)  <br/>
 GO
 
-***ALTER TABLE*** HistoricoViagens  ***ADD  CONSTRAINT*** FK_HistoricoViagens_PilotosNaves ***FOREIGN KEY***(IdPiloto, IdNave) ***REFERENCES*** PilotosNaves (IdPiloto, IdNave)
+***ALTER TABLE*** HistoricoViagens  ***ADD  CONSTRAINT*** FK_HistoricoViagens_PilotosNaves ***FOREIGN KEY***(IdPiloto, IdNave) ***REFERENCES*** PilotosNaves (IdPiloto, IdNave)  <br/>
 GO
 
-***ALTER TABLE*** HistoricoViagens ***CHECK CONSTRAINT*** FK_HistoricoViagens_PilotosNaves
+***ALTER TABLE*** HistoricoViagens ***CHECK CONSTRAINT*** FK_HistoricoViagens_PilotosNaves  <br/>
 GO
